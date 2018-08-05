@@ -34,31 +34,64 @@ module.exports = function(app){
 	// Then the server saves the data to the tableData array)
 	// ---------------------------------------------------------------------------
 
-	// app.post('/api/tables', function(req, res){
-
-	// 	// Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
-	// 	// It will do this by sending out the value "true" have a table 
-	// 	if(tableData.length < 5 ){
-	// 		tableData.push(req.body);
-	// 		res.json(true); // KEY LINE
-	// 	}
-
-	// 	// Or false if they don't have a table
-	// 	else{
-	// 		waitListData.push(req.body);
-	// 		res.json(false); // KEY LINE
-	// 	}
-
-	// });
     app.post("/api/friends", function(req, res) {
         // req.body hosts is equal to the JSON post sent from the user
         // This works because of our body-parser middleware
         var newfriend = req.body;
-        console.log(newfriend);
+		console.log(newfriend);
 
-        friendsData.push(newfriend);
-      
-        res.json(newfriend);
+	//	console.log("scores for new friend**** "+newfriend["scores[]"].length);
+		
+		console.log(friendsData.length);
+		//now to add code to find the who is the closest match among the set of friends ! 
+		//The closest one (most similar will be identified) & sent
+		var ff_d = [];
+		
+		
+		for (var i = 0;i<friendsData.length;i++){
+			//console.log(friendsData[i].scores);
+			var total_diff = 0;
+			for (var j=0;j<newfriend["scores[]"].length;j++){
+			    console.log("score " +j+" from FORM: "+newfriend["scores[]"][j]);	
+				//console.log("Score "+ j+" from dataset for user "+i+" :"+friendsData[i].scores[j]);
+				console.log("Score "+ j+" from dataset for user "+i+" :"+friendsData[i]["scores[]"][j]);
+				console.log("For question/score "+j+" for user "+i+", score difference: "+Math.abs(newfriend["scores[]"][j] - friendsData[i]["scores[]"][j]))
+				total_diff=total_diff+Math.abs(newfriend["scores[]"][j] - friendsData[i]["scores[]"][j]);
+			}	
+			console.log("*************");
+			console.log("differences with user******"+i+" :"+total_diff);
+			ff_d.push({
+				user: i,
+				score_diff:total_diff
+			});
+		}
+		console.log("loop ended");
+		console.log(ff_d);
+		//End of code to find smilarity...
+
+		var lowest = Number.POSITIVE_INFINITY;
+		var highest = Number.NEGATIVE_INFINITY;
+		var tmp;
+		var associated_user;
+		for (var i=0;i<ff_d.length;i++) {
+			tmp = ff_d[i].score_diff;
+			if (tmp < lowest) lowest = tmp;
+			if (tmp > highest) highest = tmp;
+		}
+		console.log("****hi***");
+		console.log(highest, lowest);
+
+		for (var i=0;i<ff_d.length;i++){
+			if(lowest==ff_d[i].score_diff){
+				associated_user = ff_d[i].user;
+			}
+		}	
+
+		console.log("user index with lowest difference: "+associated_user)
+
+		friendsData.push(newfriend);
+
+        res.json(friendsData[associated_user]);
 
     })
 

@@ -1,19 +1,19 @@
 var friendsArray = [
-    {"name":"Ahmed",
-    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAq7AAAAJDAwYzI4NTQ4LWYwZWUtNGFkYS1hNTYwLTZjYzkwY2ViZDA3OA.jpg",
-    "scores":["5","1","4","4","5","1","2","5","4","1"]
+    {"name":"Andy Bernard",
+    "photo":"https://vignette.wikia.nocookie.net/theoffice/images/b/b5/Andy_Bernard.jpg/revision/latest?cb=20170701084205",
+    "scores[]":["5","1","4","4","5","1","2","5","4","1"]
     },
-    {"name":"Jacob Deming",
-    "photo":"https://pbs.twimg.com/profile_images/691785039043022849/oWsy8LNR.jpg",
-    "scores":["4","2","5","1","3","2","2","1","3","2"]
+    {"name":"Jim Halpert",
+    "photo":"https://cdn.jwplayer.com/thumbs/CCe9i076-720.jpg",
+    "scores[]":["4","2","5","1","3","2","2","1","3","2"]
     },
-    {"name":"Jeremiah Scanlon",
-    "photo":"https://avatars2.githubusercontent.com/u/8504998?v=3&s=460",
-    "scores":["5","2","2","2","4","1","3","2","5","5"]
+    {"name":"Dwight Schrute",
+    "photo":"https://vignette.wikia.nocookie.net/theoffice/images/c/c5/Dwight_.jpg/revision/latest?cb=20170701082424",
+    "scores[]":["5","2","2","2","4","1","3","2","5","5"]
     },
-    {"name":"Louis T. Delia",
-    "photo":"https://pbs.twimg.com/profile_images/639214960049000449/lNCRC-ub.jpg",
-    "scores":["3","3","4","2","2","1","3","2","2","3"]
+    {"name":"Michael Scott",
+    "photo":"https://vignette.wikia.nocookie.net/theoffice/images/0/02/Michael_Scott.jpg/revision/latest?cb=20170701090332",
+    "scores[]":["3","3","4","2","2","1","3","2","2","3"]
     }
 ];
 
